@@ -45,18 +45,34 @@
  *   createPaanOrder({type:"meetha"}, {extra:"gulkand"}) // => {type:"meetha",extra:"gulkand"}
  *   updatePrices({meetha:30, saada:20}, 10)              // => {meetha:40, saada:30}
  */
+
 export function createPaanOrder(basePaan, customizations) {
-  // Your code here
+  if(typeof basePaan !== 'object' || basePaan === null) return {};
+  if(typeof customizations !== 'object') return Object.assign({},basePaan);
+  const order = Object.assign({},basePaan,customizations);
+  return order;
 }
 
 export function freezeMenu(menu) {
-  // Your code here
+  if(typeof menu !== 'object' || menu === null) return {};
+  return Object.freeze(menu);
 }
 
 export function updatePrices(menu, increase) {
-  // Your code here
+  if (typeof menu !== 'object' || menu === null || typeof increase !== 'number') return {};
+
+  // Convert object to [key, value] pairs
+  const menuArr = Object.entries(menu); // [["meetha",30],["saada",30]]
+
+  // Add increase to each value
+  const updatedArr = menuArr.map(([key, value]) => [key, value + increase]);
+
+  // Convert back to object
+  return Object.fromEntries(updatedArr);
 }
 
 export function mergeDailySpecials(regularMenu, specialsMenu) {
-  // Your code here
+  if(typeof regularMenu !== 'object' || typeof specialsMenu !== 'object') return {};
+  const mergedObj = {...regularMenu, ...specialsMenu};
+  return mergedObj;
 }
