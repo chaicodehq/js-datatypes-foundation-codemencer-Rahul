@@ -77,7 +77,7 @@ export function getThaliStats(thalis) {
   const totalPrice = thalis.reduce((acc, currentThali) => {
     return acc + currentThali.price;
   },0);
-  const avgPrice = Number((totalPrice/totalThalis).toFixed(2));
+  const avgPrice = (totalPrice/totalThalis).toFixed(2);
   const priceArr = thalis.map((thali) => thali.price);
   const cheapest = Math.min(...priceArr);
   const costliest = Math.max(...priceArr);

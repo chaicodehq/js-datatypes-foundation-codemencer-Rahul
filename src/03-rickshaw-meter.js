@@ -51,7 +51,7 @@
  *   findCheapestAndCostliest(150, 80, 200) // => { cheapest: 80, costliest: 200 }
  */
 export function parseFare(fareString) {
-  if(typeof fareString !== 'string' || parseFloat(fareString) === NaN || fareString.length === 0) return -1;
+  if(typeof fareString !== 'string' || Number.isNaN(parseFloat(fareString)) || fareString.length === 0) return -1;
   return parseFloat(fareString);
 }
 
